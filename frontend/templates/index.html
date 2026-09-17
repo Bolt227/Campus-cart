@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Cart</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+  <h1>Campus Cart</h1>
+  <p>Buy smart. Sell easy.</p>
+
+  <a href="/login">Login</a>
+  <a href="/add-item">Post an Item</a>
+  <a href="/my-listings">My Listings</a>
+  <a href="/register">Register</a>
+</header>
+
+  <main>
+    <section class="hero">
+      <h2>Find what you need on campus</h2>
+
+      <div class="filters">
+        <input id="searchInput" type="text" placeholder="Search items...">
+
+        <select id="categoryFilter">
+          <option value="">All categories</option>
+          <option value="Textbooks">Textbooks</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Stationery">Stationery</option>
+          <option value="Lab Equipment">Lab Equipment</option>
+        </select>
+
+        <button id="searchButton">Search</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Available Items</h2>
+      <div id="itemsContainer" class="items-grid">
+        <p>Loading items...</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

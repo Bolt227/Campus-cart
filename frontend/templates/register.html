@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Campus Cart</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Campus Cart</h1>
+    <p>Create a student account</p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Register</h2>
+
+      <form id="registerForm">
+        <input id="name" type="text" placeholder="Full name" required>
+        <br><br>
+
+        <input id="email" type="email" placeholder="VIT email" required>
+        <br><br>
+
+        <input id="password" type="password" placeholder="Password" required>
+        <br><br>
+
+        <button type="submit">Create Account</button>
+      </form>
+
+      <p id="message"></p>
+      <p>Already registered? <a href="/login">Login</a></p>
+    </section>
+  </main>
+
+  <script src="/static/js/register.js"></script>
+</body>
+</html>
