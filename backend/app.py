@@ -134,7 +134,7 @@ def register():
     if not name or not email or not password:
         return jsonify({"error": "Name, email, and password are required"}), 400
     if len(password) < 8:
-    return jsonify({"error": "Password must be at least 8 characters"}), 400
+        return jsonify({"error": "Password must be at least 8 characters"}), 400
 
     if not (email.endswith("@vitstudent.ac.in") or email.endswith("@vit.ac.in")):
         return jsonify({"error": "Use a VIT email address"}), 400
