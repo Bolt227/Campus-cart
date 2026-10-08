@@ -22,6 +22,7 @@ form.addEventListener("submit", async (event) => {
 
   if (response.ok) {
     message.textContent = "Account created. Redirecting to login...";
+    message.classList.add("ok");
 
     setTimeout(() => {
       window.location.href = "/login";

@@ -4,36 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register - Campus Cart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Campus Cart</h1>
-    <p>Create a student account</p>
-  </header>
+  <div id="navbar"></div>
 
   <main>
-    <section class="hero">
-      <h2>Register</h2>
+    <section class="form-card narrow">
+      <h2>Create your account</h2>
+      <p class="subtitle">Join the VIT student marketplace in under a minute.</p>
 
       <form id="registerForm">
-        <input id="name" type="text" placeholder="Full name" required>
-        <br><br>
-
-        <input id="email" type="email" placeholder="VIT email" required>
-        <br><br>
-
-        <input id="password" type="password" placeholder="Password" required>
-        <br><br>
-
-        <button type="submit">Create Account</button>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" type="text" placeholder="Your full name" required>
+        </div>
+        <div class="field">
+          <label for="email">VIT email</label>
+          <input id="email" type="email" placeholder="name@vitstudent.ac.in" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Choose a password" required>
+        </div>
+        <button type="submit" class="btn-block">Create Account</button>
       </form>
 
-      <p id="message"></p>
-      <p>Already registered? <a href="/login">Login</a></p>
+      <p id="message" class="form-message"></p>
+      <p class="alt">Already registered? <a href="/login">Login</a></p>
     </section>
   </main>
 
+  <footer class="site-footer">Campus Cart · Made for VIT students, by VIT students</footer>
+
+  <script src="/static/js/common.js"></script>
   <script src="/static/js/register.js"></script>
 </body>
 </html>

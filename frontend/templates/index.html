@@ -3,28 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campus Cart</title>
+  <title>Campus Cart - Buy smart. Sell easy.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-  <header>
-  <h1>Campus Cart</h1>
-  <p>Buy smart. Sell easy.</p>
-
-  <a href="/login">Login</a>
-  <a href="/add-item">Post an Item</a>
-  <a href="/my-listings">My Listings</a>
-  <span id="userGreeting"></span>
-<button id="logoutButton" type="button">Logout</button>
-  <a href="/register">Register</a>
-</header>
+  <div id="navbar"></div>
 
   <main>
     <section class="hero">
-      <h2>Find what you need on campus</h2>
+      <h2>Buy smart. Sell easy.</h2>
+      <p>The student-to-student marketplace for textbooks, electronics, furniture and more, right on campus.</p>
 
       <div class="filters">
-        <input id="searchInput" type="text" placeholder="Search items...">
+        <input id="searchInput" type="text" placeholder="Search for books, laptops, lab coats...">
 
         <select id="categoryFilter">
           <option value="">All categories</option>
@@ -35,18 +29,23 @@
           <option value="Lab Equipment">Lab Equipment</option>
         </select>
 
-        <button id="searchButton">Search</button>
+        <button id="searchButton" type="button">Search</button>
       </div>
     </section>
 
-    <section>
-      <h2>Available Items</h2>
-      <div id="itemsContainer" class="items-grid">
-        <p>Loading items...</p>
-      </div>
-    </section>
+    <div class="section-head">
+      <h2>Available items</h2>
+      <a href="/add-item" class="btn btn-sm">+ Post an item</a>
+    </div>
+
+    <div id="itemsContainer" class="items-grid">
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+    </div>
   </main>
 
+  <footer class="site-footer">Campus Cart · Made for VIT students, by VIT students</footer>
+
+  <script src="/static/js/common.js"></script>
   <script src="/static/js/main.js"></script>
 </body>
 </html>

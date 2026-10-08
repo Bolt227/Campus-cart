@@ -54,6 +54,7 @@ form.addEventListener("submit", async (event) => {
 
   if (response.ok) {
     message.textContent = "Item updated successfully!";
+    message.classList.add("ok");
 
     setTimeout(() => {
       window.location.href = "/my-listings";

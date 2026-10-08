@@ -4,20 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Item Details - Campus Cart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Campus Cart</h1>
-    <a href="/">Back to Home</a>
-  </header>
+  <div id="navbar"></div>
 
   <main>
-    <section class="hero" id="itemContainer">
-      <p>Loading item details...</p>
+    <a href="/" class="back-link">← Back to all items</a>
+    <section id="itemContainer">
+      <div class="skeleton"></div>
     </section>
   </main>
 
+  <footer class="site-footer">Campus Cart · Made for VIT students, by VIT students</footer>
+
+  <script src="/static/js/common.js"></script>
   <script src="/static/js/item_details.js"></script>
 </body>
 </html>

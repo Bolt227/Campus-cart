@@ -4,52 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Item - Campus Cart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Campus Cart</h1>
-    <p>Edit your listing</p>
-  </header>
+  <div id="navbar"></div>
 
   <main>
-    <section class="hero">
-      <h2>Edit Item</h2>
+    <section class="form-card">
+      <h2>Edit listing</h2>
+      <p class="subtitle">Update the details of your item.</p>
 
       <form id="editItemForm">
-        <input id="title" type="text" placeholder="Item title" required>
-        <br><br>
-
-        <textarea id="description" placeholder="Description" required></textarea>
-        <br><br>
-
-        <select id="category" required>
-          <option value="Textbooks">Textbooks</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Furniture">Furniture</option>
-          <option value="Stationery">Stationery</option>
-          <option value="Lab Equipment">Lab Equipment</option>
-        </select>
-        <br><br>
-
-        <select id="itemCondition" required>
-          <option value="New">New</option>
-          <option value="Like New">Like New</option>
-          <option value="Good">Good</option>
-          <option value="Fair">Fair</option>
-        </select>
-        <br><br>
-
-        <input id="price" type="number" min="1" placeholder="Price in ₹" required>
-        <br><br>
-
-        <button type="submit">Save Changes</button>
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" type="text" placeholder="Item title" required>
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Description" required></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" required>
+              <option value="Textbooks">Textbooks</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Stationery">Stationery</option>
+              <option value="Lab Equipment">Lab Equipment</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="itemCondition">Condition</label>
+            <select id="itemCondition" required>
+              <option value="New">New</option>
+              <option value="Like New">Like New</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="price">Price (₹)</label>
+          <input id="price" type="number" min="1" placeholder="Price in ₹" required>
+        </div>
+        <button type="submit" class="btn-block">Save Changes</button>
+        <a href="/my-listings" class="btn btn-ghost btn-block" style="margin-top:10px">Cancel</a>
       </form>
 
-      <p id="message"></p>
+      <p id="message" class="form-message"></p>
     </section>
   </main>
 
+  <footer class="site-footer">Campus Cart · Made for VIT students, by VIT students</footer>
+
+  <script src="/static/js/common.js"></script>
   <script src="/static/js/edit_item.js"></script>
 </body>
 </html>

@@ -24,6 +24,7 @@ form.addEventListener("submit", async (event) => {
     localStorage.setItem("userName", result.user.name);
 
     message.textContent = "Login successful!";
+    message.classList.add("ok");
     window.location.href = "/";
   } else {
     message.textContent = result.error || "Login failed.";

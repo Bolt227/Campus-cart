@@ -4,21 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Listings - Campus Cart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Campus Cart</h1>
-    <p>My Listings</p>
-  </header>
+  <div id="navbar"></div>
 
   <main>
-    <section>
-      <h2>Your Posted Items</h2>
-      <div id="itemsContainer" class="items-grid"></div>
-    </section>
+    <div class="section-head" style="margin-top:0">
+      <div>
+        <h2>My listings</h2>
+        <p class="muted" style="margin:0">Manage the items you've posted.</p>
+      </div>
+      <a href="/add-item" class="btn btn-sm">+ Post an item</a>
+    </div>
+    <div id="itemsContainer" class="items-grid"></div>
   </main>
 
+  <footer class="site-footer">Campus Cart · Made for VIT students, by VIT students</footer>
+
+  <script src="/static/js/common.js"></script>
   <script src="/static/js/my_listings.js"></script>
 </body>
 </html>

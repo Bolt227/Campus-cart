@@ -38,6 +38,7 @@ form.addEventListener("submit", async (event) => {
 
   if (response.ok) {
     message.textContent = "Item posted successfully!";
+    message.classList.add("ok");
     form.reset();
 
     setTimeout(() => {
