@@ -14,20 +14,29 @@ async function loadMyItems() {
     return;
   }
 
-  itemsContainer.innerHTML = items.map(item => `
-    <article class="item-card">
-      <p class="category">${item.category}</p>
-      <h3>${item.title}</h3>
-      <p>${item.description}</p>
-      <p>Condition: ${item.item_condition}</p>
-      <p class="price">₹${item.price}</p>
-      <p>Status: <strong>${item.status}</strong></p>
+  itemsContainer.innerHTML = items.map(item => {
+    const image = item.image_path
+      ? `<img class="item-image" src="${item.image_path}" alt="${item.title}">`
+      : `<div class="no-image">No image available</div>`;
 
-      ${item.status === "available"
-        ? `<button onclick="markAsSold(${item.id})">Mark as Sold</button>`
-        : ""}
-    </article>
-  `).join("");
+    return `
+      <article class="item-card">
+        ${image}
+        <p class="category">${item.category}</p>
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+        <p>Condition: ${item.item_condition}</p>
+        <p class="price">₹${item.price}</p>
+        <p>Status: <strong>${item.status}</strong></p>
+
+        ${item.status === "available"
+          ? `<button onclick="markAsSold(${item.id})">Mark as Sold</button>`
+          : ""}
+
+        <button onclick="deleteItem(${item.id})">Delete Item</button>
+      </article>
+    `;
+  }).join("");
 }
 
 async function markAsSold(itemId) {
@@ -46,4 +55,55 @@ async function markAsSold(itemId) {
   }
 }
 
+async function deleteItem(itemId) {
+  const shouldDelete = confirm("Are you sure you want to delete this item?");
+
+  if (!shouldDelete) {
+    return;
+  }
+
+  const response = await fetch(`/api/items/${itemId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      seller_id: Number(userId)
+    })
+  });
+
+  const result = await response.json();
+
+  if (response.ok) {
+    loadMyItems();
+  } else {
+    alert(result.error || "Could not delete item.");
+  }
+}
+
 loadMyItems();
+async function deleteItem(itemId) {
+  const shouldDelete = confirm("Are you sure you want to delete this item?");
+
+  if (!shouldDelete) {
+    return;
+  }
+
+  const response = await fetch(`/api/items/${itemId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      seller_id: Number(userId)
+    })
+  });
+
+  const result = await response.json();
+
+  if (response.ok) {
+    loadMyItems();
+  } else {
+    alert(result.error || "Could not delete item.");
+  }
+}

@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post an Item - Campus Cart</title>
+  <title>Edit Item - Campus Cart</title>
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
   <header>
     <h1>Campus Cart</h1>
-    <p>Post an item for sale</p>
+    <p>Edit your listing</p>
   </header>
 
   <main>
     <section class="hero">
-      <h2>Add a Listing</h2>
+      <h2>Edit Item</h2>
 
-      <form id="addItemForm">
+      <form id="editItemForm">
         <input id="title" type="text" placeholder="Item title" required>
         <br><br>
 
@@ -24,7 +24,6 @@
         <br><br>
 
         <select id="category" required>
-          <option value="">Choose a category</option>
           <option value="Textbooks">Textbooks</option>
           <option value="Electronics">Electronics</option>
           <option value="Furniture">Furniture</option>
@@ -34,7 +33,6 @@
         <br><br>
 
         <select id="itemCondition" required>
-          <option value="">Choose condition</option>
           <option value="New">New</option>
           <option value="Like New">Like New</option>
           <option value="Good">Good</option>
@@ -44,16 +42,14 @@
 
         <input id="price" type="number" min="1" placeholder="Price in ₹" required>
         <br><br>
-        <input id="image" type="file" accept="image/png, image/jpeg, image/gif, image/webp">
-        <br><br>
 
-        <button type="submit">Post Item</button>
+        <button type="submit">Save Changes</button>
       </form>
 
       <p id="message"></p>
     </section>
   </main>
 
-  <script src="/static/js/add_item.js"></script>
+  <script src="/static/js/edit_item.js"></script>
 </body>
 </html>

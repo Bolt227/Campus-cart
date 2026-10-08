@@ -1,24 +1,37 @@
 const form = document.getElementById("addItemForm");
 const message = document.getElementById("message");
 
+const sellerId = localStorage.getItem("userId");
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const item = {
-    title: document.getElementById("title").value,
-    description: document.getElementById("description").value,
-    category: document.getElementById("category").value,
-    item_condition: document.getElementById("itemCondition").value,
-    price: document.getElementById("price").value,
-    seller_id: 1
-  };
+  if (!sellerId) {
+    message.textContent = "Please log in before posting an item.";
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 1200);
+    return;
+  }
+
+  const formData = new FormData();
+
+  formData.append("title", document.getElementById("title").value);
+  formData.append("description", document.getElementById("description").value);
+  formData.append("category", document.getElementById("category").value);
+  formData.append("item_condition", document.getElementById("itemCondition").value);
+  formData.append("price", document.getElementById("price").value);
+  formData.append("seller_id", sellerId);
+
+  const image = document.getElementById("image").files[0];
+
+  if (image) {
+    formData.append("image", image);
+  }
 
   const response = await fetch("/api/items", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(item)
+    body: formData
   });
 
   const result = await response.json();

@@ -11,7 +11,12 @@ async function loadItemDetails() {
 
   const item = await response.json();
 
+  const image = item.image_path
+    ? `<img class="item-image" src="${item.image_path}" alt="${item.title}">`
+    : `<div class="no-image">No image available</div>`;
+
   itemContainer.innerHTML = `
+    ${image}
     <p class="category">${item.category}</p>
     <h2>${item.title}</h2>
     <p>${item.description}</p>
