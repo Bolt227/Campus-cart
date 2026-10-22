@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Cart - Buy smart. Sell easy.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main>
+    <section class="hero">
+      <h2>Buy smart. Sell easy.</h2>
+      <p>The student-to-student marketplace for textbooks, electronics, furniture and more, right on campus.</p>
+
+      <div class="filters">
+        <input id="searchInput" type="text" placeholder="Search for books, laptops, lab coats...">
+
+        <select id="categoryFilter">
+          <option value="">All categories</option>
+          <option value="Textbooks">Textbooks</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Stationery">Stationery</option>
+          <option value="Lab Equipment">Lab Equipment</option>
+        </select>
+
+        <button id="searchButton" type="button">Search</button>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <h2>Available items</h2>
+      <a href="/add-item" class="btn btn-sm">+ Post an item</a>
+    </div>
+
+    <div id="itemsContainer" class="items-grid">
+      <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">Campus Cart · Made for VIT students, by VIT students</footer>
+
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
