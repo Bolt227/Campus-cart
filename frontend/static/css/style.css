@@ -385,3 +385,20 @@ input[type="file"] { padding: 10px; background: var(--surface-2); border-style: 
   .field-row { grid-template-columns: 1fr; }
   .form-card { padding: 26px 20px; }
 }
+
+/* ---------- Checkout (item details page) ---------- */
+.checkout-section {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 14px;
+  background: var(--surface-2, #f8fafc);
+}
+.checkout-section h3 { margin: 0 0 10px; font-size: 16px; }
+.checkout-section label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+.checkout-section input { margin-bottom: 12px; }
+.checkout-section .btn[disabled],
+.checkout-section button[disabled] { opacity: .6; cursor: not-allowed; }
+#payment-message { margin: 10px 0 0; font-size: 14px; color: var(--text-muted, #64748b); min-height: 1.2em; }
+.badge.pending { background: #fef3c7; color: #b45309; }
+.seller-card .btn { margin-top: 12px; }

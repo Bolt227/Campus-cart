@@ -4,8 +4,9 @@ const categoryFilter = document.getElementById("categoryFilter");
 const searchButton = document.getElementById("searchButton");
 
 function renderItemCard(item) {
-  const image = item.image_path
-    ? `<img class="item-image" src="${escapeHtml(item.image_path)}" alt="${escapeHtml(item.title)}" loading="lazy">`
+  const imageSrc = safeImageSrc(item.image_path);
+  const image = imageSrc
+    ? `<img class="item-image" src="${escapeHtml(imageSrc)}" alt="${escapeHtml(item.title)}" loading="lazy">`
     : `<div class="no-image">No image available</div>`;
 
   return `
@@ -20,7 +21,7 @@ function renderItemCard(item) {
         <p class="card-desc">${escapeHtml(item.description)}</p>
         <div class="card-footer">
           <span class="price">₹${escapeHtml(item.price)}</span>
-          <a class="btn btn-sm" href="/item/${item.id}">View Details</a>
+          <a class="btn btn-sm" href="/item/${Number(item.id)}">View Details</a>
         </div>
       </div>
     </article>

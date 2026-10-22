@@ -1,12 +1,44 @@
 /* Shared helpers + navbar, loaded on every page before the page's own script. */
 
-function escapeHtml(text) {
-  const element = document.createElement("div");
-  element.textContent = text == null ? "" : String(text);
-  return element.innerHTML;
+// Escape text for safe use in HTML content AND inside quoted attributes.
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, function (character) {
+    const replacements = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    };
+
+    return replacements[character];
+  });
 }
 
-(function renderNavbar() {
+// Allow only local upload paths or https image URLs.
+function safeImageSrc(path) {
+  const value = String(path || "").trim();
+
+  if (!value) return "";
+  if (value.startsWith("/") && !value.startsWith("//")) return value;
+  if (/^https:\/\//i.test(value)) return value;
+
+  return "";
+}
+
+// Forget the browser-side login info (the server session is separate).
+function clearLocalLogin() {
+  localStorage.removeItem("userId");
+  localStorage.removeItem("userName");
+}
+
+// If the server says we are not logged in, clean up and go to the login page.
+function redirectToLogin() {
+  clearLocalLogin();
+  window.location.href = "/login";
+}
+
+function renderNavbar() {
   const mount = document.getElementById("navbar");
   if (!mount) return;
 
@@ -48,9 +80,36 @@ function escapeHtml(text) {
       } catch (error) {
         console.error("Could not clear the server session:", error);
       }
-      localStorage.removeItem("userId");
-      localStorage.removeItem("userName");
+      clearLocalLogin();
       window.location.href = "/login";
     });
   }
-})();
+}
+
+// Keep the navbar in sync with the real server session, so an expired
+// session does not leave the browser thinking it is still logged in.
+async function syncLoginState() {
+  try {
+    const response = await fetch("/api/me", { credentials: "same-origin" });
+
+    if (response.ok) {
+      const { user } = await response.json();
+      const changed =
+        localStorage.getItem("userId") !== String(user.id) ||
+        localStorage.getItem("userName") !== user.name;
+
+      localStorage.setItem("userId", user.id);
+      localStorage.setItem("userName", user.name);
+      if (changed) renderNavbar();
+    } else if (response.status === 401 && localStorage.getItem("userId")) {
+      clearLocalLogin();
+      renderNavbar();
+    }
+  } catch (error) {
+    // Offline or server down: keep whatever the navbar already shows.
+    console.error("Could not check login state:", error);
+  }
+}
+
+renderNavbar();
+syncLoginState();
