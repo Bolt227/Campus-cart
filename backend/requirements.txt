@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 Flask
 requests
 python-dotenv
+=======
+Flask
+>>>>>>> e99bb9278b3627224eeb00efa7d165e5ee6b365e

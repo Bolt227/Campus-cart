@@ -1,18 +1,28 @@
 import os
+<<<<<<< HEAD
 import re
+=======
+>>>>>>> e99bb9278b3627224eeb00efa7d165e5ee6b365e
 import sqlite3
 from pathlib import Path
 from uuid import uuid4
 
+<<<<<<< HEAD
 import requests
 from dotenv import load_dotenv
 from flask import Flask, current_app, jsonify, redirect, request, send_from_directory, session
+=======
+from flask import Flask, jsonify, redirect, request, send_from_directory, session
+>>>>>>> e99bb9278b3627224eeb00efa7d165e5ee6b365e
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 
 
+<<<<<<< HEAD
 load_dotenv()
 
+=======
+>>>>>>> e99bb9278b3627224eeb00efa7d165e5ee6b365e
 BASE_DIR = Path(__file__).parent
 FRONTEND_DIR = BASE_DIR.parent / "frontend"
 DATABASE = BASE_DIR / "database.db"
@@ -36,6 +46,7 @@ if not secret_key:
 app.config["SECRET_KEY"] = secret_key
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+<<<<<<< HEAD
 # Cashfree Payment Gateway configuration.
 # Set CASHFREE_APP_ID and CASHFREE_SECRET_KEY in your environment.
 # Keep CASHFREE_MODE=sandbox while testing.
@@ -49,6 +60,8 @@ CASHFREE_BASE_URL = (
     else "https://api.cashfree.com/pg"
 )
 
+=======
+>>>>>>> e99bb9278b3627224eeb00efa7d165e5ee6b365e
 
 def allowed_file(filename):
     return (
@@ -92,6 +105,7 @@ def init_db():
         )
     """)
 
+<<<<<<< HEAD
     connection.execute("""
         CREATE TABLE IF NOT EXISTS payment_orders (
             order_id TEXT PRIMARY KEY,
@@ -107,6 +121,8 @@ def init_db():
         )
     """)
 
+=======
+>>>>>>> e99bb9278b3627224eeb00efa7d165e5ee6b365e
     connection.commit()
     connection.close()
 
@@ -478,6 +494,7 @@ def delete_item(item_id):
     return jsonify({"message": "Item deleted successfully"})
 
 
+<<<<<<< HEAD
 
 def cashfree_headers():
     """Build headers for Cashfree's server-side API requests."""
@@ -770,6 +787,8 @@ def cashfree_payment_return():
     )
 
 
+=======
+>>>>>>> e99bb9278b3627224eeb00efa7d165e5ee6b365e
 @app.route("/uploads/<path:filename>")
 def uploaded_file(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
